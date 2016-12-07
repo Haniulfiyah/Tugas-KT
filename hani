@@ -1,0 +1,24 @@
+/* Nilai temperatur ditampilkan di layar komputer */
+
+int potPin = 0;		// select the input pin for the LM35
+float temperature = 0;	// type float -> 2 angka di blkng koma
+long val = 0;		// tyle long = int, hanya range nilainya lebih besar
+void setup()
+{
+Serial.begin(9600);
+}
+void loop()
+{
+if (Serial.available())	// jika layar monitor dibuka
+{
+val = analogRead(potPin);	// membaca suhu pada sensor
+temperature = (5.0 * val * 100.0)/1024.0;	// mengkonfersi suhu ke celcius
+Serial.println(temperature);		// menampilkan nilai suhu di layar monitor
+// Serial.println((long)temperature);	// jika nilainya ingin dibulatkan
+}
+delay(1000);
+}
+
+
+
+
